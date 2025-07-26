@@ -108,40 +108,64 @@ const AdHocAppointmentForm: React.FC<AdHocAppointmentFormProps> = ({
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gray-50 py-4 sm:py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         <div className="bg-white shadow-lg rounded-lg overflow-hidden">
           {/* Form Header */}
-          <div className="bg-green-600 text-white p-6">
-            <div className="flex justify-between items-center">
+          <div className="bg-green-600 text-white p-4 sm:p-6">
+            {/* Desktop Header */}
+            <div className="hidden sm:flex justify-between items-center">
               <div className="flex items-center">
                 <img
                   src="/image/logo mcan.png"
                   alt="MCAN Logo"
-                  className="h-12 w-12 rounded-full object-contain mr-4"
+                  className="h-10 sm:h-12 w-10 sm:w-12 rounded-full object-contain mr-3 sm:mr-4 flex-shrink-0"
                 />
                 <div>
-                  <h1 className="text-2xl font-bold">MCAN Ad Hoc Appointment Letter</h1>
-                  <p className="text-green-100">Executive Appointment Form</p>
+                  <h1 className="text-lg sm:text-xl lg:text-2xl font-bold">MCAN Ad Hoc Appointment Letter</h1>
+                  <p className="text-green-100 text-sm">Executive Appointment Form</p>
                 </div>
               </div>
               <button
                 onClick={onBack}
-                className="bg-green-500 hover:bg-green-400 px-4 py-2 rounded-md transition duration-200"
+                className="bg-green-500 hover:bg-green-400 px-3 sm:px-4 py-2 rounded-md transition duration-200 text-sm sm:text-base flex-shrink-0"
               >
-                ← Back to Type Selection
+                ← Back
               </button>
+            </div>
+
+            {/* Mobile Header */}
+            <div className="sm:hidden">
+              <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center min-w-0 flex-1">
+                  <img
+                    src="/image/logo mcan.png"
+                    alt="MCAN Logo"
+                    className="h-8 w-8 rounded-full object-contain mr-3 flex-shrink-0"
+                  />
+                  <div className="min-w-0">
+                    <h1 className="text-lg font-bold truncate">MCAN Ad Hoc Letter</h1>
+                    <p className="text-green-100 text-xs">Executive Form</p>
+                  </div>
+                </div>
+                <button
+                  onClick={onBack}
+                  className="bg-green-500 hover:bg-green-400 px-3 py-1.5 rounded-md transition duration-200 text-sm flex-shrink-0"
+                >
+                  ← Back
+                </button>
+              </div>
             </div>
           </div>
 
-          <div className="flex flex-col lg:flex-row">
+          <div className="flex flex-col xl:flex-row">
             {/* Form Section */}
-            <div className="lg:w-1/3 p-6 border-r border-gray-200">
-              <h2 className="text-xl font-semibold text-gray-800 mb-6">
+            <div className="xl:w-1/3 p-4 sm:p-6 xl:border-r border-gray-200">
+              <h2 className="text-lg sm:text-xl font-semibold text-gray-800 mb-4 sm:mb-6">
                 Ad Hoc Appointment Details
               </h2>
 
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
                 {/* Name Field - Required for Ad Hoc */}
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
@@ -152,7 +176,7 @@ const AdHocAppointmentForm: React.FC<AdHocAppointmentFormProps> = ({
                     id="name"
                     value={formData.name}
                     onChange={(e) => handleInputChange('name', e.target.value)}
-                    className={`w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                    className={`w-full px-3 py-2.5 sm:py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 text-base sm:text-sm ${
                       errors.name ? 'border-red-500' : 'border-gray-300'
                     }`}
                     placeholder="Enter full name"
@@ -171,7 +195,7 @@ const AdHocAppointmentForm: React.FC<AdHocAppointmentFormProps> = ({
                     id="position"
                     value={formData.position}
                     onChange={(e) => handleInputChange('position', e.target.value)}
-                    className={`w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                    className={`w-full px-3 py-2.5 sm:py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 text-base sm:text-sm ${
                       errors.position ? 'border-red-500' : 'border-gray-300'
                     }`}
                   >
@@ -186,7 +210,7 @@ const AdHocAppointmentForm: React.FC<AdHocAppointmentFormProps> = ({
                 </div>
 
                 {/* Date Range */}
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="startDate" className="block text-sm font-medium text-gray-700 mb-2">
                       Start Date *
@@ -196,7 +220,7 @@ const AdHocAppointmentForm: React.FC<AdHocAppointmentFormProps> = ({
                       id="startDate"
                       value={formData.startDate}
                       onChange={(e) => handleInputChange('startDate', e.target.value)}
-                      className={`w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                      className={`w-full px-3 py-2.5 sm:py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 text-base sm:text-sm ${
                         errors.startDate ? 'border-red-500' : 'border-gray-300'
                       }`}
                     />
@@ -213,7 +237,7 @@ const AdHocAppointmentForm: React.FC<AdHocAppointmentFormProps> = ({
                       id="endDate"
                       value={formData.endDate}
                       onChange={(e) => handleInputChange('endDate', e.target.value)}
-                      className={`w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                      className={`w-full px-3 py-2.5 sm:py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 text-base sm:text-sm ${
                         errors.endDate ? 'border-red-500' : 'border-gray-300'
                       }`}
                     />
@@ -233,7 +257,7 @@ const AdHocAppointmentForm: React.FC<AdHocAppointmentFormProps> = ({
                     id="referenceNumber"
                     value={formData.referenceNumber}
                     onChange={(e) => handleInputChange('referenceNumber', e.target.value)}
-                    className={`w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                    className={`w-full px-3 py-2.5 sm:py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 text-base sm:text-sm ${
                       errors.referenceNumber ? 'border-red-500' : 'border-gray-300'
                     }`}
                     placeholder="MCAN/2024/001"
@@ -252,7 +276,7 @@ const AdHocAppointmentForm: React.FC<AdHocAppointmentFormProps> = ({
                     id="batch"
                     value={formData.batch}
                     onChange={(e) => handleInputChange('batch', e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2.5 sm:py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 text-base sm:text-sm"
                   >
                     {BATCHES.map(batch => (
                       <option key={batch} value={batch}>{batch}</option>
@@ -264,7 +288,7 @@ const AdHocAppointmentForm: React.FC<AdHocAppointmentFormProps> = ({
                 <div className="pt-4">
                   <button
                     type="submit"
-                    className="w-full bg-green-600 text-white py-3 px-4 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition duration-200 font-medium"
+                    className="w-full bg-green-600 text-white py-3 px-4 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition duration-200 font-medium text-base sm:text-sm"
                   >
                     Generate Ad Hoc Appointment Letter
                   </button>
@@ -273,13 +297,33 @@ const AdHocAppointmentForm: React.FC<AdHocAppointmentFormProps> = ({
             </div>
 
             {/* Preview Section */}
-            <div className="lg:w-2/3 p-6">
-              <h2 className="text-xl font-semibold text-gray-800 mb-4">
-                Live Preview
-              </h2>
-              <div className="border border-gray-300 rounded-md p-4 bg-gray-50 min-h-[600px] overflow-auto">
+            <div className="xl:w-2/3 p-4 sm:p-6">
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="text-lg sm:text-xl font-semibold text-gray-800">
+                  Live Preview
+                </h2>
+                <div className="xl:hidden">
+                  <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">
+                    Scroll to view
+                  </span>
+                </div>
+              </div>
+
+              {/* Mobile Preview */}
+              <div className="xl:hidden border border-gray-300 rounded-md p-2 bg-gray-50 overflow-auto">
+                <div className="transform scale-50 origin-top-left" style={{ width: '200%', height: '200%' }}>
+                  <LivePreview
+                    configurationData={configurationData}
+                    appointmentData={formData}
+                    appointmentType="adhoc"
+                  />
+                </div>
+              </div>
+
+              {/* Desktop Preview */}
+              <div className="hidden xl:block border border-gray-300 rounded-md p-4 bg-gray-50 min-h-[600px] overflow-auto">
                 <div className="transform scale-75 origin-top">
-                  <LivePreview 
+                  <LivePreview
                     configurationData={configurationData}
                     appointmentData={formData}
                     appointmentType="adhoc"
