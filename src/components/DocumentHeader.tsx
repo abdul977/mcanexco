@@ -16,6 +16,7 @@ const DocumentHeader: React.FC<DocumentHeaderProps> = ({ configurationData }) =>
             <img
               src="/image/logo mcan.png"
               alt="MCAN Logo"
+              loading="lazy"
             />
           </div>
           <div className="logo-caption-left">
@@ -41,6 +42,7 @@ const DocumentHeader: React.FC<DocumentHeaderProps> = ({ configurationData }) =>
             <img
               src="/image/nysc logo.jpg"
               alt="NYSC Logo"
+              loading="lazy"
             />
           </div>
           <div className="logo-caption-right">

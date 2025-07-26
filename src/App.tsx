@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useReactToPrint } from 'react-to-print';
 import { AppointmentProvider } from './context/AppointmentContext';
 import TabNavigation from './components/TabNavigation';
-import OriginalLetterView from './components/OriginalLetterView';
 import ConfigurationForm from './components/ConfigurationForm';
 import ConfigurationManager from './components/ConfigurationManager';
 import AppointmentTypeSelector from './components/AppointmentTypeSelector';
@@ -16,7 +15,6 @@ import './styles/appointment-letter.css';
 type AppView = 'configuration' | 'manager' | 'typeSelector' | 'appointment' | 'adhocAppointment' | 'preview';
 
 function App() {
-  const [activeTab, setActiveTab] = useState<'original' | 'new'>('new');
   const [currentView, setCurrentView] = useState<AppView>('configuration');
   const [configurationData, setConfigurationData] = useState<ConfigurationData | null>(null);
   const [appointmentType, setAppointmentType] = useState<AppointmentType>('regular');
@@ -116,21 +114,13 @@ function App() {
     `
   });
 
-  // Show original letter in iframe
-  if (activeTab === 'original') {
-    return (
-      <div className="min-h-screen bg-gray-50">
-        <TabNavigation activeTab={activeTab} onTabChange={setActiveTab} />
-        <OriginalLetterView />
-      </div>
-    );
-  }
+
 
   // Show final preview with print functionality
   if (currentView === 'preview' && configurationData) {
     return (
       <div className="min-h-screen bg-gray-50">
-        <TabNavigation activeTab={activeTab} onTabChange={setActiveTab} />
+        <TabNavigation activeTab="new" onTabChange={() => {}} />
         <div className="bg-green-600 text-white p-4 no-print">
           <div className="max-w-6xl mx-auto flex justify-between items-center">
             <div className="flex items-center">
@@ -186,7 +176,7 @@ function App() {
   return (
     <AppointmentProvider>
       <div className="min-h-screen bg-gray-50">
-        <TabNavigation activeTab={activeTab} onTabChange={setActiveTab} />
+        <TabNavigation activeTab="new" onTabChange={() => {}} />
 
         {currentView === 'configuration' && (
           <ConfigurationForm onConfigurationComplete={handleConfigurationComplete} />
