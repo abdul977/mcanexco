@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Letter - MCAN</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Times New Roman', serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        .document {
+            width: 8.5in;
+            height: 11in;
+            background: white;
+            margin: 0 auto;
+            padding: 40px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .document::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('file:///c:/Users/user/Desktop/ADHOC%20letter%20of%20appointment/sb1-67zsrwyr-1637201442e3d69b06fc82c19cd1efb56a666a5b/image/logo%20mcan.png');
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: 350px 350px;
+            opacity: 0.08;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo-left {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 80px;
+            height: 80px;
+        }
+
+        .logo-left img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 50%;
+            position: relative;
+            left: -7px;
+            top: -15px;
+        }
+
+        .logo-right {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 80px;
+            height: 80px;
+        }
+
+        .logo-right img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 50%;
+            position: relative;
+            left: 0px;
+            top: -12px;
+        }
+
+        .logo-caption-left {
+            position: absolute;
+            left: -18px;
+            top: 76px;
+            width: 120px;
+            font-size: 9px;
+            text-align: center;
+            line-height: 1.3;
+            font-weight: bold;
+        }
+
+        .logo-caption-right {
+            position: absolute;
+            left: 633px;
+            top: 78px;
+            width: 120px;
+            font-size: 9px;
+            text-align: center;
+            line-height: 1.3;
+            font-weight: bold;
+        }
+
+        .organization-name {
+            font-size: 18px;
+            font-weight: 900;
+            margin: 10px 0;
+            letter-spacing: 0.5px;
+            position: relative;
+            left: 0px;
+            top: 22px;
+        }
+
+        .chapter-name {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            position: relative;
+            left: 0px;
+            top: 16px;
+        }
+
+        .contact-info {
+            font-size: 12px;
+            margin: 5px 0;
+            line-height: 1.4;
+            height: 16.7969px;
+            position: relative;
+            left: 0px;
+            top: 21px;
+            transition: none;
+        }
+
+        .motto {
+            font-size: 11px;
+            font-style: italic;
+            margin: 15px 0;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            left: 1px;
+            top: 7px;
+        }
+
+        .reference-section {
+            margin: 20px 0;
+            text-align: left;
+            font-size: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .ref-line:nth-child(1) {
+            flex: 1;
+            margin: 0 20px;
+            position: relative;
+            left: -6px;
+            top: 15px;
+        }
+
+        .ref-line:nth-child(2) {
+            flex: 1;
+            margin: 0 20px;
+            position: relative;
+            left: -23px;
+            top: 16px;
+        }
+
+        .ref-line:nth-child(3) {
+            flex: 1;
+            margin: 0 20px;
+            position: relative;
+            left: 0px;
+            top: 17px;
+        }
+
+        .horizontal-line {
+            border-top: 3px solid #000;
+            margin: 15px 0;
+            font-weight: bold;
+        }
+
+        .horizontal-line:first-of-type {
+            position: relative;
+            left: 1px;
+            top: 14px;
+        }
+
+        .horizontal-line:last-of-type {
+            position: relative;
+            left: -3px;
+            top: -17px;
+        }
+
+        .title {
+            font-size: 20px;
+            font-weight: bold;
+            text-decoration: underline;
+            margin: 30px 0;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .content {
+            text-align: justify;
+            line-height: 1.8;
+            font-size: 14px;
+            margin: 30px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .congratulations {
+            text-align: center;
+            font-family: 'Brush Script MT', 'Lucida Handwriting', cursive;
+            font-size: 32px;
+            color: #2c5aa0;
+            margin: 40px 0;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 1;
+        }
+
+        .date-signature-container {
+            margin-top: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            position: relative;
+            z-index: 1;
+        }
+
+        .date-section {
+            text-align: left;
+            flex: 1;
+        }
+
+        .signature-section {
+            display: flex;
+            justify-content: flex-end;
+            flex: 1;
+            position: relative;
+            z-index: 1;
+        }
+
+        .signature-left {
+            text-align: left;
+        }
+
+        .signature-right {
+            text-align: right;
+        }
+
+        .signature-line {
+            border-bottom: 1px solid #000;
+            width: 200px;
+            margin: 10px 0 3px 0;
+        }
+
+        .stamp {
+            position: absolute;
+            bottom: 100px;
+            right: 50px;
+            width: 60px;
+            height: 60px;
+            border: 2px solid #000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="document">
+        <!-- Header with logos -->
+        <div class="header">
+            <div class="logo-left">
+                <img src="file:///c:/Users/user/Desktop/ADHOC%20letter%20of%20appointment/sb1-67zsrwyr-1637201442e3d69b06fc82c19cd1efb56a666a5b/image/logo%20mcan.png" alt="MCAN Logo">
+            </div>
+            <div class="logo-caption-left">
+                Secretary General Name: ........................<br>
+                Secretary General Phone Number: ........................
+            </div>
+
+            <div class="logo-right">
+                <img src="file:///c:/Users/user/Desktop/ADHOC%20letter%20of%20appointment/sb1-67zsrwyr-1637201442e3d69b06fc82c19cd1efb56a666a5b/image/nysc%20logo.jpg" alt="NYSC Logo">
+            </div>
+            <div class="logo-caption-right">
+                NYSC Logo<br><br>
+                President Name: ........................<br>
+                President Phone Number: ........................
+            </div>
+
+            <div class="organization-name">
+                MUSLIM CORPERS' ASSOCIATION OF NIGERIA
+            </div>
+            <div class="chapter-name">
+                (MCAN) FCT CHAPTER
+            </div>
+
+            <div style="font-size: 12px; margin: 10px 0; text-align: center;">
+                NYSC Permanent Orientation Camp, Kubwa, Bwari Area Council, FCT Abuja
+            </div>
+
+            <div class="contact-info">Email: mcanfctng@gmail.com</div>
+
+            <div class="motto">
+                <strong>Motto:</strong> 'Say, Truly, my prayer and my service, my life and my death, (all) for Allah, the Cherisher of the Worlds'
+            </div>
+
+            <div class="reference-section">
+                <div class="ref-line">Our Ref: ........................</div>
+                <div class="ref-line">Your Ref: ........................</div>
+                <div class="ref-line">Date: ........................</div>
+            </div>
+
+            <div class="horizontal-line"></div>
+            <div class="horizontal-line"></div>
+        </div>
+
+        <!-- Title -->
+        <div class="title">
+            APPOINTMENT LETTER
+        </div>
+
+        <!-- Main content -->
+        <div class="content">
+            After satisfying the laid down requirement by the Shurah committee of the
+            organization and after due consideration, we hereby
+            <strong>APPOINT ABDULLMIN IBRAHIM A.B. BUSINESS CHAIRMAN</strong> to serve
+            the position for <strong>2024-2025</strong> academic session, hoping for your best
+            services, dedication and contribution towards the upliftment of the
+            organization and Islam at large.
+        </div>
+
+        <!-- Congratulations -->
+        <div class="congratulations">
+            Congratulations!
+        </div>
+
+        <!-- Date and Signature section aligned horizontally -->
+        <div class="date-signature-container">
+            <div class="date-section">
+                Date: _______________
+            </div>
+
+            <div class="signature-section">
+                <div class="signature-left">
+                    <div class="signature-line"></div>
+                    <div style="position: relative; left: -22px; top: -12px; width: 33px; height: 17px;">Sign</div>
+                    <div style="margin-top: -8px;">Chairman Shurah Committee</div>
+                    <div style="margin-top: 2px;"><strong>SULEIMAN AHMAD SIDI</strong></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Official stamp -->
+    </div>
+
+    <script>
+        // Simple JavaScript for any interactive features
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add current date if needed
+            const today = new Date();
+            const dateString = today.toLocaleDateString();
+            
+            // You can uncomment the line below to auto-fill the date
+            // document.querySelector('.date-section').innerHTML = `Date: ${dateString}`;
+            
+            console.log('Appointment Letter document loaded successfully');
+        });
+
+        // Function to print the document
+        function printDocument() {
+            window.print();
+        }
+
+        // Add print functionality with Ctrl+P
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && e.key === 'p') {
+                e.preventDefault();
+                printDocument();
+            }
+        });
+    </script>
+</body>
+</html>
